@@ -1,55 +1,56 @@
 'use client'
 
-
 import Image from "next/image";
 import { bebasNeue, oswald, anton } from "./fonts";
-import { useState } from "react";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+
 export default function Home() {
-
-  const [offsetY, setOffsetY] = useState<number>(0)
-  const [isStyle, setIsStyle] = useState<boolean>(false)
-  const [isStyle2, setIsStyle2] = useState<boolean>(false)
-  const [isStyle3, setIsStyle3] = useState<boolean>(false)
-  const [isStyle4, setIsStyle4] = useState<boolean>(false)
-  const img = useRef<HTMLDivElement>(null)
-  const img2 = useRef<HTMLDivElement>(null)
-  const exp = useRef<HTMLDivElement>(null)
-  const form = useRef<HTMLDivElement>(null)
-
+  const [offsetY, setOffsetY] = useState<number>(0);
+  const [isStyle, setIsStyle] = useState<boolean>(false);
+  const [isStyle2, setIsStyle2] = useState<boolean>(false);
+  const [isStyle3, setIsStyle3] = useState<boolean>(false);
+  const [isStyle4, setIsStyle4] = useState<boolean>(false);
+  
+  const img = useRef<HTMLDivElement>(null);
+  const img2 = useRef<HTMLDivElement>(null);
+  const exp = useRef<HTMLDivElement>(null);
+  const form = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
-
-
-    let observer = new IntersectionObserver((entries) => {
+    const imgRef = img.current;
+    const img2Ref = img2.current;
+    const expRef = exp.current;
+    const formRef = form.current;
+    
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.target === img.current) {
-          entry.isIntersecting ? setIsStyle(false) : setIsStyle(true)
-        } else if (entry.target === img2.current) {
-          entry.isIntersecting ? setIsStyle2(false) : setIsStyle2(true)
-        } else if (entry.target === exp.current) {
-          entry.isIntersecting ? setIsStyle3(false) : setIsStyle3(true)
-        } else if (entry.target === form.current)
-          entry.isIntersecting ? setIsStyle4(false) : setIsStyle4(true)
-      })
+        if (entry.target === imgRef) {
+          setIsStyle(!entry.isIntersecting);
+        } else if (entry.target === img2Ref) {
+          setIsStyle2(!entry.isIntersecting);
+        } else if (entry.target === expRef) {
+          setIsStyle3(!entry.isIntersecting);
+        } else if (entry.target === formRef) {
+          setIsStyle4(!entry.isIntersecting);
+        }
+      });
     }, { root: null, rootMargin: "0px", threshold: 0.6 });
 
-    if (img.current !== null && img2.current !== null && exp.current !== null && form.current !== null) {
-      observer.observe(img.current)
-      observer.observe(img2.current)
-      observer.observe(exp.current)
-      observer.observe(form.current)
-    }
+    const elements = [imgRef, img2Ref, expRef, formRef];
+    elements.forEach(el => {
+      if (el) observer.observe(el);
+    });
 
     const handleScrollY = () => {
       setOffsetY(window.scrollY / 5);
     };
-    window.addEventListener("scroll", handleScrollY)
+    window.addEventListener("scroll", handleScrollY);
+
     return () => {
-      window.removeEventListener("scroll", handleScrollY)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScrollY);
+      observer.disconnect();
+    };
+  }, []); 
 
 
   return (
