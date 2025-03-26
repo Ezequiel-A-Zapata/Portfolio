@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { bebasNeue, oswald, anton } from "./fonts";
 import { useState, useEffect, useRef } from "react";
+import ContactForm from "./ContactForm"
 
 export default function Home() {
   const [offsetY, setOffsetY] = useState<number>(0);
@@ -83,12 +84,12 @@ export default function Home() {
             md:mr-[1.5vw] md:mt-[1vh]
             mr-[3vw] mt-[1vh]
           `}><strong>ABOUT ME</strong></h2>
-          <p className={`${oswald.className} text-sm  text-right  text-black 
+          <p className={`${oswald.className} text-xl  text-right  text-black 
           xl:w-[24vw]
           lg:mr-[1.5vw] lg:w-[30vw]
           md:mr-[1.5vw] md:w-[27vw]
           mr-[3vw] w-[50vw]
-          `}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia metus sit amet quam scelerisque, vel maximus nisi elementum. Integer nec interdum arcu. Nullam ac tincidunt metus. Nunc hendrerit sapien sit amet dui tincidunt, at sollicitudin justo lobortis. Donec vitae turpis sed ligula malesuada fermentum. Quisque sollicitudin laoreet augue at mollis. Fusce vehicula, velit in feugiat tempor, orci elit suscipit sapien, et efficitur justo urna ut orci. Fusce sit amet sapien quis nisi aliquet volutpat a eget turpis. Nulla facilisi. In vestibulum nunc at risus ultricies, eget convallis purus tempor. Sed lacinia metus id velit tristique, nec cursus nulla vehicula. Nam volutpat, orci non eleifend varius, lectus erat consectetur leo, sed varius risus ipsum at augue. Aenean ac dui a erat mollis convallis a vel metus.
+          `}>I’m Ezequiel Zapata. I’m Frontend developer. Now I’m studying at MISIS University the software engineer career. I’m from Argentina, but I  live in Moscow cause I study here with a university scholarship. I want to develop and improve as a professional in the IT world. Now I  only work in the frontend but also I want to learn more about backend
           </p>
         </div>
         <Image src="/foto-perfil.png" alt="fondo-nombre2" width={550} height={790}
@@ -164,6 +165,14 @@ export default function Home() {
           md:ml-[2vw] md:mt-[1vh]
           ml-[3vw] mt-[1vh]
           `}>SKILLS</p>
+          <div className=" w-full items-center h-[80%]  flex flex-wrap justify-center gap-[3vw]  ">
+          <img src="/html5.svg" alt="html5" className=" w-16 h-16" />
+          <img src="/css3.svg" alt="css" className=" w-16 h-16" />
+          <img src="/javascript.svg" alt="javascript" className=" w-16 h-16" />
+          <img src="/sass.svg" alt="sass" className=" w-16 h-16" />
+          <img src="/react.svg" alt="react" className=" w-16 h-16" />
+          <img src="/firebase.svg" alt="firebase" className=" w-16 h-16" />
+          </div>
         </div>
       </section>
 
@@ -197,17 +206,27 @@ export default function Home() {
             <p>HOLA</p>
           </div>
         </div>
-        <div className={` bg-custonBlue flex flex-row-reverse 
+        <div className={` bg-custonBlue 
         xl:mt-[14.5vh]  xl:w-[19vw] xl:h-[65vh]
         lg:mt-[5vh]  lg:w-[19vw] lg:h-[65vh] lg:mb-0
         md:mt-[5vh]  md:w-[19vw] md:h-[43vh] 
         mt-[5vh] w-[25vw] h-[30vh] mb-[2vh]
           transition-[margin-right]  duration-300 ease-in-out ${isStyle2 ? "lg:mr-[60vw] md:mr-[60vw] mr-[60vw]" : "lg:mr-[3.5vw] md:mr-[3.5vw] mr-[3vw]"}`}>
           <p className={` ${bebasNeue.className} md:text-4xl text-3xl text-customCream 
-          lg:mr-[1vw] lg:mt-[2vh]
-          md:mr-[2vw] md:mt-[1vh]
-          mr-[3vw] mt-[1vh]
+          lg:ml-[1vw] lg:mt-[2vh] 
+          md:ml-[2vw] md:mt-[1vh]
+          ml-[3vw] mt-[1vh]
           `}>SKILLS</p>
+                    <div className=" w-full items-center h-[80%]  flex flex-wrap justify-center gap-[3vw]  ">
+          <img src="/html5.svg" alt="html5" className=" w-16 h-16" />
+          <img src="/css3.svg" alt="css" className=" w-16 h-16" />
+          <img src="/javascript.svg" alt="javascript" className=" w-16 h-16" />
+          <img src="/typescript.svg" alt="typescript" className=" w-16 h-16" />
+          <img src="/nextdotjs.svg" alt="nextjs" className=" w-16 h-16" />
+          <img src="/tailwindcss.svg" alt="tailwindcss" className=" w-16 h-16" />
+          
+          
+          </div>
         </div>
       </section>
 
@@ -243,7 +262,9 @@ export default function Home() {
       lg:w-[100vw] lg:h-[90vh]
       md:w-[100vw] md:h-[90vh]
       w-[100vw] h-[90vh]">
-        <div className={`bg-customDarkBlue lg:w-[90vw] md:w-[90vw] w-[90vw] transition-all duration-700 ease-in-out ${isStyle4 ? "lg:h-0 md:h-0 h-0" : "lg:h-[90vh] md:h-[90vh] h-[90vh]"}`}></div>
+        <div className={`bg-customDarkBlue flex flex-col items-center lg:w-[90vw] md:w-[90vw] w-[90vw] transition-all duration-700 ease-in-out ${isStyle4 ? "lg:h-0 md:h-0 h-0" : "lg:h-[90vh] md:h-[90vh] h-[90vh]"}`}>
+          <ContactForm></ContactForm>
+        </div>
       </section>
     </section>
   );
